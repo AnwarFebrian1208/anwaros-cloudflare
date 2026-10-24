@@ -2,7 +2,11 @@
 
 A personal automation that watches remote front-end job boards for me, every day at 07:00 WIB — even when my laptop is off. It runs entirely on Cloudflare's free tier.
 
-**Live concept:** a single Worker fetches public job APIs, filters them with my own rules (front-end / React / JavaScript, junior-friendly, remote-only, no senior/lead roles), marks listings it has never seen before as **BARU** (new) using Workers KV as its memory, and serves the result as a simple web page.
+**🔗 Live demo:** https://anwaros.anwarfebrian.workers.dev
+
+![AnwarOS homepage](screenshot.png)
+
+**Live concept:** a single Worker fetches public job APIs, filters them with my own rules (front-end / React / JavaScript, junior-friendly, remote-only, no senior/lead roles, no blockchain/web3), marks listings it has never seen before as **BARU** (new) using Workers KV as its memory, accumulates up to 50 listings on the homepage, and serves the result as a simple web page. A `/debug` page shows per-source raw and passed counts, including fetch failures.
 
 ## How it works
 
@@ -16,12 +20,15 @@ A personal automation that watches remote front-end job boards for me, every day
 
 - [Remotive](https://remotive.com/api/remote-jobs) — listings are credited and every card links back to the original posting; the API is called only once per day.
 - [Arbeitnow](https://www.arbeitnow.com/api/job-board-api) — free public job-board API; only `remote: true` listings are kept.
+- [Jobicy](https://jobicy.com/api/v2/remote-jobs) — free public API; listings are credited and linked back to the original posting.
+- [Himalayas](https://himalayas.app/jobs/api) — free public API; apply buttons go to the original `applicationLink`.
 
 ## Endpoints
 
-- `/` — the daily list as a web page
+- `/` — the accumulated list (up to 50) as a web page
 - `/run` — trigger a watch run manually (for testing)
-- `/api` — the latest list as JSON
+- `/api` — the accumulated list plus last-run stats as JSON
+- `/debug` — per-source diagnostics: raw counts, filter pass counts, fetch failures
 
 ## Tech
 
