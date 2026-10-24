@@ -1,0 +1,15 @@
+# Konfigurasi AnwarOS di Cloudflare
+# File ini yang dibaca Wrangler pas deploy. Cuma 1 baris yang WAJIB kamu ganti: id KV di bawah.
+
+name = "anwaros"
+main = "src/worker.js"
+compatibility_date = "2025-04-01"
+
+# Alarm harian: "0 0 * * *" itu jam 00:00 UTC = jam 07.00 WIB
+[triggers]
+crons = ["0 0 * * *"]
+
+# Buku catatan (KV) — ganti id di bawah dengan id yang kamu dapat dari langkah 4 di PANDUAN-DEPLOY.md
+[[kv_namespaces]]
+binding = "ANWAROS_KV"
+id = "599628314c4d46cabcd93474893a2513"

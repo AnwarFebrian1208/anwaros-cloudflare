@@ -1,0 +1,1 @@
+{"description":"AnwarOS — personal remote frontend job watcher running 24/7 on Cloudflare Workers (free tier)","devDependencies":{"wrangler":"^4.0.0"},"name":"anwaros-cloudflare","private":true,"scripts":{"deploy":"wrangler deploy","dev":"wrangler dev"},"type":"module","version":"1.0.0"}
